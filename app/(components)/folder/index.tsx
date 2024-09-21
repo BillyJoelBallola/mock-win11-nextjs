@@ -3,6 +3,7 @@
 import { useDesktop } from "@/app/hooks/useDesktop";
 import DraggableWrapper from "../draggableWrapper";
 import FolderHeader from "./FolderHeader";
+import FolderTools from "./FolderTools";
 
 function Folder() {
   const { state } = useDesktop();
@@ -20,8 +21,8 @@ function Folder() {
         className={`${isOpenStyle} transition-opacity duration-150 w-[800px] border border-zinc-700 shadow-xl rounded-lg absolute bg-zinc-800 text-zinc-50`}
       >
         <FolderHeader />
-        <div>tools</div>
-        <div>
+        <FolderTools />
+        <div className="grid grid-cols-[200px_1fr]">
           <div>sidebar</div>
           <div>main</div>
         </div>

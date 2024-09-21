@@ -50,7 +50,7 @@ const FolderHeader = () => {
         </div>
       </div>
       {/* control & path & filter */}
-      <div className="bg-zinc-700 drop-shadow-lg px-2 py-2 flex items-center gap-4">
+      <div className="bg-zinc-700 px-2 py-2 flex items-center gap-4">
         <div className="flex items-center gap-6">
           <button>
             <ArrowLeft className="size-4" />
