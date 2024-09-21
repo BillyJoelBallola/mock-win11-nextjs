@@ -23,6 +23,10 @@ const TaskBarApp = ({ imgSrc, appname, code }: TaskBarAppProps) => {
         return !desktopState.folder.isOpen
           ? desktopDispatch({ type: "toggleFolder" })
           : desktopDispatch({ type: "toggleMinimizeFolder" });
+      case "edge":
+        return !desktopState.edge.isOpen
+          ? desktopDispatch({ type: "toggleEdge" })
+          : desktopDispatch({ type: "toggleMinimizeEdge" });
       case "photoshop":
         return desktopDispatch({ type: "toggleMinimizePhotoshop" });
       case "vscode":

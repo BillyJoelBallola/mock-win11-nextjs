@@ -36,7 +36,7 @@ export type DesktopContextType = {
   dispatch: Dispatch<DesktopActionType>;
 };
 
-interface ImageResult {
+export type ImageResult = {
   kind: string;
   title: string;
   htmlTitle: string;
@@ -52,10 +52,10 @@ interface ImageResult {
       width: number;
       height: number;
     };
-    cse_image?: { src?: string }[];
+    cse_image?: { src: string }[];
     metatags?: { [key: string]: string };
   };
-}
+};
 
 export type WebResult = {
   displayLink: string;

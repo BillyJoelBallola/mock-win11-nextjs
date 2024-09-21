@@ -63,6 +63,16 @@ const reducer = (state: Desktop, action: DesktopActionType): Desktop => {
         ...state,
         chrome: { ...state.chrome, isMinimize: !state.chrome.isMinimize },
       };
+    case "toggleEdge":
+      return {
+        ...state,
+        edge: { ...state.edge, isOpen: !state.edge.isOpen },
+      };
+    case "toggleMinimizeEdge":
+      return {
+        ...state,
+        edge: { ...state.edge, isMinimize: !state.edge.isMinimize },
+      };
     default:
       return state;
   }

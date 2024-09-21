@@ -1,7 +1,7 @@
 import FolderIcon from "@/public/desktop-folder-icon.png";
 import ChromeIcon from "@/public/chrome-icon.png";
 import RecycleBin from "@/public/recyclebin-icon.png";
-import Edge from "@/public/edge-icon.png";
+import EdgeIcon from "@/public/edge-icon.png";
 import VSCodeIcon from "@/public/vscode-icon.png";
 import PhotoshopIcon from "@/public/photoshop-icon.png";
 
@@ -11,6 +11,7 @@ import Folder from "../folder";
 import Photoshop from "../photoshop";
 import VSCode from "../vscode";
 import Chrome from "../chrome";
+import Edge from "../edge";
 
 const desktopIcons = [
   {
@@ -24,7 +25,7 @@ const desktopIcons = [
     code: "chrome",
   },
   {
-    imgSrc: Edge,
+    imgSrc: EdgeIcon,
     appname: "Mircosoft Edge",
     code: "edge",
   },
@@ -69,6 +70,7 @@ const Desktop = () => {
           <Photoshop />
           <VSCode />
           <Chrome />
+          <Edge />
         </div>
       </div>
     </>

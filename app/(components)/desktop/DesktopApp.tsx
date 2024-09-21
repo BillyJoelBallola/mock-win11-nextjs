@@ -24,6 +24,8 @@ const DesktopApp = ({ imgSrc, appname, code }: DesktopAppProps) => {
         return !state.vscode.isOpen ? dispatch({ type: "toggleVSCode" }) : null;
       case "chrome":
         return !state.chrome.isOpen ? dispatch({ type: "toggleChrome" }) : null;
+      case "edge":
+        return !state.edge.isOpen ? dispatch({ type: "toggleEdge" }) : null;
       default:
         break;
     }
@@ -47,6 +49,10 @@ const DesktopApp = ({ imgSrc, appname, code }: DesktopAppProps) => {
         return state.chrome.isOpen
           ? dispatch({ type: "toggleMinimizeChrome" })
           : null;
+      case "edge":
+        return state.edge.isOpen
+          ? dispatch({ type: "toggleMinimizeEdge" })
+          : null;
       default:
         break;
     }
@@ -58,7 +64,7 @@ const DesktopApp = ({ imgSrc, appname, code }: DesktopAppProps) => {
       onDoubleClick={handleAppDoubleClick}
       className="cursor-default flex flex-col gap-1 w-20 min-h-fit items-center hover:bg-zinc-50/10 duration-150"
     >
-      <Image src={imgSrc} alt={appname} className="size-10" />
+      <Image src={imgSrc} alt={appname} className="size-8" />
       <span className="text-xs text-zinc-50">{appname}</span>
     </button>
   );

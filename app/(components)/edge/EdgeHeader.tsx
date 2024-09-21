@@ -1,25 +1,21 @@
 "use client";
 
 import { useDesktop } from "@/app/hooks/useDesktop";
+import Profile from "@/public/profilePicture.jpg";
 import {
   ArrowLeft,
   ArrowRight,
-  Chrome,
   EllipsisVertical,
   Minus,
   RotateCw,
+  Search,
   Square,
+  Table2,
   X,
 } from "lucide-react";
-import Profile from "@/public/profilePicture.jpg";
 import Image from "next/image";
 
-type ChromeHeaderProps = {
-  handleSearch: (e: React.FormEvent<HTMLFormElement>) => void;
-  handleReset: () => void;
-};
-
-const ChromeHeader = ({ handleSearch, handleReset }: ChromeHeaderProps) => {
+const EdgeHeader = () => {
   const { dispatch } = useDesktop();
 
   return (
@@ -27,7 +23,7 @@ const ChromeHeader = ({ handleSearch, handleReset }: ChromeHeaderProps) => {
       <div className=" flex items-center justify-between px-2 pt-2">
         <div className="flex items-center justify-between bg-zinc-700 w-52 px-2 py-1 rounded-se-lg rounded-ss-lg">
           <div className="flex items-center gap-2">
-            <Chrome className="size-5" />
+            <Table2 className="size-5" />
             <span className="text-xs">New Tab</span>
           </div>
           <button>
@@ -35,13 +31,13 @@ const ChromeHeader = ({ handleSearch, handleReset }: ChromeHeaderProps) => {
           </button>
         </div>
         <div className="flex items-center gap-4 text-zinc-50">
-          <button onClick={() => dispatch({ type: "toggleMinimizeChrome" })}>
+          <button onClick={() => dispatch({ type: "toggleMinimizeEdge" })}>
             <Minus className="size-4" />
           </button>
           <button>
             <Square className="size-3" />
           </button>
-          <button onClick={() => dispatch({ type: "toggleChrome" })}>
+          <button onClick={() => dispatch({ type: "toggleEdge" })}>
             <X className="size-4" />
           </button>
         </div>
@@ -54,30 +50,25 @@ const ChromeHeader = ({ handleSearch, handleReset }: ChromeHeaderProps) => {
           <button>
             <ArrowRight className="size-4" />
           </button>
-          <button onClick={handleReset}>
+          <button>
             <RotateCw className="size-4" />
           </button>
         </div>
-        <form
-          onSubmit={handleSearch}
-          className="flex-1 gap-2 py-1 px-2 rounded-full bg-zinc-800 flex items-center"
-        >
-          <div className="rounded-full bg-zinc-700 font-semibold px-2">G</div>
+        <form className="flex-1 gap-2 py-1 px-2 rounded-full bg-zinc-800 flex items-center">
+          <div className="font-semibold p-1">
+            <Search className="size-4" />
+          </div>
           <button type="submit" className="hidden" />
           <input
             type="search"
             name="query"
-            placeholder="Search Google or type a URL"
+            placeholder="Search or enter web address"
             className="outline-none bg-transparent w-full text-sm"
           />
         </form>
         <div className="flex items-center gap-4">
           <div className="rounded-full overflow-hidden size-6">
-            <Image
-              src={Profile}
-              alt="google profile"
-              className="w-full h-full"
-            />
+            <Image src={Profile} alt="edge profile" className="w-full h-full" />
           </div>
           <button>
             <EllipsisVertical className="size-4" />
@@ -88,4 +79,4 @@ const ChromeHeader = ({ handleSearch, handleReset }: ChromeHeaderProps) => {
   );
 };
 
-export default ChromeHeader;
+export default EdgeHeader;

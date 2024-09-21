@@ -10,7 +10,6 @@ import SearchResult from "./SearchResult";
 
 const Chrome = () => {
   const { state } = useDesktop();
-  const [query, setQuery] = useState("");
   const [searching, setSearching] = useState(false);
   const [results, setResults] = useState<any>({
     webResult: [],
@@ -26,11 +25,12 @@ const Chrome = () => {
 
   const handleReset = () => {
     setResults({ webResult: [], imagesResult: [] });
-    setQuery("");
   };
 
   const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const query = Object.values(e.currentTarget)[1].value;
 
     if (query === "") return;
 
@@ -39,7 +39,6 @@ const Chrome = () => {
     try {
       const webResults: any[] = [];
       const imageResults: any[] = [];
-
       const response: { data: { items?: any[] } } = await axios.get(
         `${process.env.NEXT_PUBLIC_GOOGLE_API}`,
         {
@@ -51,7 +50,6 @@ const Chrome = () => {
           },
         }
       );
-
       response.data.items?.map((result: any) => {
         if (result.kind === "customsearch#result") {
           webResults.push(result);
@@ -62,7 +60,6 @@ const Chrome = () => {
           }
         }
       });
-
       setResults({ webResult: webResults, imageResult: imageResults });
     } catch (error) {
       console.log("Error: ", error);
@@ -76,18 +73,9 @@ const Chrome = () => {
       <div
         className={`${isOpenStyle} transition-opacity duration-150 w-[800px] border border-zinc-700 shadow-xl rounded-lg absolute bg-zinc-800 text-zinc-50`}
       >
-        <ChromeHeader
-          handleSearch={handleSearch}
-          query={query}
-          setQuery={setQuery}
-          handleReset={handleReset}
-        />
+        <ChromeHeader handleSearch={handleSearch} handleReset={handleReset} />
         {results.webResult.length === 0 || results.imageResult.length === 0 ? (
-          <ChromeBody
-            handleSearch={handleSearch}
-            query={query}
-            setQuery={setQuery}
-          />
+          <ChromeBody handleSearch={handleSearch} />
         ) : (
           <SearchResult results={results} />
         )}

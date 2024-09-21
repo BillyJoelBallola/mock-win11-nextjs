@@ -2,11 +2,9 @@ import { Plus, Search } from "lucide-react";
 
 type ChromeBodyProps = {
   handleSearch: (e: React.FormEvent<HTMLFormElement>) => void;
-  setQuery: React.Dispatch<string>;
-  query: string;
 };
 
-const ChromeBody = ({ handleSearch, setQuery, query }: ChromeBodyProps) => {
+const ChromeBody = ({ handleSearch }: ChromeBodyProps) => {
   return (
     <div className="bg-zinc-700 grid place-items-center h-[500px]">
       <div className="grid place-items-center gap-8">
@@ -20,8 +18,7 @@ const ChromeBody = ({ handleSearch, setQuery, query }: ChromeBodyProps) => {
           </button>
           <input
             type="search"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            name="query"
             placeholder="Search Goofle or type a URL"
             className="outline-none text-zinc-900 w-full"
           />
