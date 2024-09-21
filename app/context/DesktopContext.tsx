@@ -5,7 +5,7 @@ import {
   Desktop,
   DesktopActionType,
   DesktopContextType,
-} from "../types/desktopTypes";
+} from "../types/desktop.types";
 
 const initialState: Desktop = {
   folder: { isOpen: false, isMinimize: false },

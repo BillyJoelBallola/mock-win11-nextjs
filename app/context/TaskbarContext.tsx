@@ -5,7 +5,7 @@ import {
   Taskbar,
   TaskbarActionType,
   TaskbarContextType,
-} from "../types/taskbarTypes";
+} from "../types/taskbar.types";
 
 const initialState: Taskbar = {
   sleep: false,

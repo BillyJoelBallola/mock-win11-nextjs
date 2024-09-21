@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, ReactNode, useEffect, useReducer } from "react";
-import { UserActionType, UserContextType, UserType } from "../types/userTypes";
+import { UserActionType, UserContextType, UserType } from "../types/user.types";
 
 const initialState: UserType = {
   username: null,

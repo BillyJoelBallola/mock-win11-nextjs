@@ -88,7 +88,7 @@ const PowerMenu = () => {
   const router = useRouter();
 
   return (
-    <div className="group-hover:opacity-100 opacity-0 absolute bg-zinc-800/90 shadow-md text-xs bottom-8 right-0 w-36 py-2 rounded-md">
+    <div className="group-hover:opacity-100 group-hover:z-30 opacity-0 -z-10 absolute bg-zinc-800/90 shadow-md text-xs bottom-8 right-0 w-36 py-2 rounded-md">
       <button
         onClick={() => {
           taskbarDispatch({ type: "toggleSleep" });
@@ -145,7 +145,7 @@ const TaskMenu = () => {
       <div className="px-10 flex flex-col gap-6">
         <div className="flex items-center justify-between text-sm">
           <span className="font-semibold">Pinned</span>
-          <button className="flex items-center gap-2 pl-2 pr-1 rounded-md bg-zinc-800/90 hover:bg-zinc-800 duration-150 shadow-sm">
+          <button className="flex items-center gap-2 pl-2 pr-1 rounded-md bg-zinc-800/90 hover:bg-zinc-700 duration-150 shadow-sm">
             <span>All apps</span>
             <ChevronRight className="size-4" />
           </button>
@@ -162,7 +162,7 @@ const TaskMenu = () => {
       <div className="px-10 flex flex-col gap-6">
         <div className="flex items-center justify-between text-sm">
           <span className="font-semibold">Recommended</span>
-          <button className="flex items-center gap-2 pl-2 pr-1 rounded-md bg-zinc-800/90 hover:bg-zinc-800 duration-150 shadow-sm">
+          <button className="flex items-center gap-2 pl-2 pr-1 rounded-md bg-zinc-800/90 hover:bg-zinc-700 duration-150 shadow-sm">
             <span>More</span>
             <ChevronRight className="size-4" />
           </button>
@@ -184,15 +184,15 @@ const TaskMenu = () => {
       </div>
 
       <div className="bg-zinc-800/70 px-10 py-2 flex items-center justify-between">
-        <button className="flex items-center gap-2 text-xs p-2 rounded-md hover:bg-zinc-600">
+        <button className="flex items-center gap-2 text-xs p-2 rounded-md hover:bg-zinc-700">
           <div className="rounded-full overflow-hidden text-zinc-50 size-6">
             <Image src={Profile} alt="profile" className="size-full" />
           </div>
           <span>{state.username ? state.username : "Billy Joel Ballola"}</span>
         </button>
-        <div className="relative group p-2 rounded-md">
+        <div className="relative group rounded-md">
           <PowerMenu />
-          <button className="cursor-default duration-150 p-2 rounded-md hover:bg-zinc-600">
+          <button className="cursor-default duration-150 p-2 rounded-md hover:bg-zinc-700">
             <Power className="size-4" />
           </button>
         </div>

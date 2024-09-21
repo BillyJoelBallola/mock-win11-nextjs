@@ -1,47 +1,7 @@
+"use client";
+
 import { useState } from "react";
-
-interface ImageResult {
-  kind: string;
-  title: string;
-  htmlTitle: string;
-  link: string;
-  displayLink: string;
-  snippet: string;
-  htmlSnippet: string;
-  formattedUrl: string;
-  htmlFormattedUrl: string;
-  pagemap: {
-    cse_thumbnail?: {
-      src: string;
-      width: number;
-      height: number;
-    };
-    cse_image?: { src: string }[];
-    metatags?: { [key: string]: string };
-  };
-}
-
-interface webResult {
-  displayLink: string;
-  formattedUrl: string;
-  htmlFormattedUrl: string;
-  htmlSnippet: string;
-  htmlTitle: string;
-  link: string;
-  pagemap: {
-    cse_image?: { src: string }[];
-    cse_thumbnail?: { src: string; height: string; width: string }[];
-  };
-  snippet: string;
-  title: string;
-}
-
-interface SearchResultsProps {
-  results: {
-    webResult: webResult[];
-    imageResult: ImageResult[];
-  };
-}
+import { SearchResultsProps } from "@/app/types/desktop.types";
 
 const SearchResult = ({ results }: SearchResultsProps) => {
   const [activeTab, setActiveTab] = useState<"web" | "image">("web");

@@ -13,7 +13,7 @@ import TaskBarInfo from "./TaskBarInfo";
 import TaskMenu from "./TaskMenu";
 import { useTaskbar } from "@/app/hooks/useTaskbar";
 import { useDesktop } from "@/app/hooks/useDesktop";
-import { DesktopKey } from "@/app/types/desktopTypes";
+import { DesktopKey } from "@/app/types/desktop.types";
 import React from "react";
 
 const taskBarFunctionalApps = [

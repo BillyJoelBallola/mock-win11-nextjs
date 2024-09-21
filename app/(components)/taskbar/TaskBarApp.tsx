@@ -2,7 +2,7 @@
 
 import { useDesktop } from "@/app/hooks/useDesktop";
 import { useTaskbar } from "@/app/hooks/useTaskbar";
-import { DesktopKey } from "@/app/types/desktopTypes";
+import { DesktopKey } from "@/app/types/desktop.types";
 import Image, { StaticImageData } from "next/image";
 
 type TaskBarAppProps = {
@@ -20,7 +20,9 @@ const TaskBarApp = ({ imgSrc, appname, code }: TaskBarAppProps) => {
       case "window":
         return taskbarDispatch({ type: "toggleTaskmenu" });
       case "folder":
-        return desktopDispatch({ type: "toggleMinimizeFolder" });
+        return !desktopState.folder.isOpen
+          ? desktopDispatch({ type: "toggleFolder" })
+          : desktopDispatch({ type: "toggleMinimizeFolder" });
       case "photoshop":
         return desktopDispatch({ type: "toggleMinimizePhotoshop" });
       case "vscode":
