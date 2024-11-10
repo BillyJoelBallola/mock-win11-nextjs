@@ -1,3 +1,7 @@
+"use client";
+
+import { useFolder } from "@/app/hooks/useFolder";
+import { FolderKey } from "@/app/types/folder.types";
 import {
   ArrowDownToLine,
   ChevronDown,
@@ -8,44 +12,34 @@ import {
   Star,
   TvMinimal,
 } from "lucide-react";
-import { useState } from "react";
 
-const quickAccessLink = [
-  {
-    label: "Desktop",
-    code: "desktop",
-    Icon: TvMinimal as LucideIcon,
-  },
-  {
-    label: "Download",
-    code: "download",
-    Icon: ArrowDownToLine as LucideIcon,
-  },
-  {
-    label: "Document",
-    code: "document",
-    Icon: File as LucideIcon,
-  },
-  {
-    label: "Pictures",
-    code: "pictures",
-    Icon: Image as LucideIcon,
-  },
-];
+const quickAccessLink = {
+  links: [
+    {
+      label: "Desktop",
+      code: "desktop",
+      Icon: TvMinimal as LucideIcon,
+    },
+    {
+      label: "Download",
+      code: "download",
+      Icon: ArrowDownToLine as LucideIcon,
+    },
+    {
+      label: "Document",
+      code: "document",
+      Icon: File as LucideIcon,
+    },
+    {
+      label: "Pictures",
+      code: "pictures",
+      Icon: Image as LucideIcon,
+    },
+  ],
+};
 
 const FolderSidebar = () => {
-  const [sidebar, setSidebar] = useState({
-    quickAccess: false,
-    thisPC: false,
-    network: false,
-  });
-
-  const toggleSublinks = (code: keyof typeof sidebar) => {
-    setSidebar((curr) => ({
-      ...curr,
-      [code]: !curr[code],
-    }));
-  };
+  const { state, dispatch } = useFolder();
 
   return (
     <aside className="border-r border-zinc-700 py-4">
@@ -53,9 +47,14 @@ const FolderSidebar = () => {
         <li className="text-sm">
           <button
             className="pl-2 py-1 flex items-center gap-2 w-full hover:bg-zinc-700"
-            onClick={() => toggleSublinks("quickAccess")}
+            onClick={() =>
+              dispatch({
+                type: "toggleSidebarSubLinks",
+                payload: { code: "quickAccess" },
+              })
+            }
           >
-            {sidebar.quickAccess ? (
+            {state.quickAccess.isOpen ? (
               <ChevronDown className="size-4" />
             ) : (
               <ChevronRight className="size-4" />
@@ -65,11 +64,22 @@ const FolderSidebar = () => {
               <span>Quick Access</span>
             </div>
           </button>
-          {sidebar.quickAccess && (
+          {state.quickAccess.isOpen && (
             <ul className="grid">
-              {quickAccessLink.map((item) => (
+              {quickAccessLink.links.map((item, idx) => (
                 <li key={item.code}>
-                  <button className="pl-8 py-1 flex items-center gap-2 hover:bg-zinc-700 w-full">
+                  <button
+                    onClick={() =>
+                      dispatch({
+                        type: "toggleSubLinks",
+                        payload: {
+                          sidebarCode: "quickAccess",
+                          sublinkIdx: idx,
+                        },
+                      })
+                    }
+                    className="pl-8 py-1 flex items-center gap-2 hover:bg-zinc-700 w-full"
+                  >
                     <item.Icon className="size-4" />
                     <span>{item.label}</span>
                   </button>

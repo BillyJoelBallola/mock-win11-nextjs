@@ -11,6 +11,7 @@ import SearchResult from "./SearchResult";
 const Chrome = () => {
   const { state } = useDesktop();
   const [searching, setSearching] = useState(false);
+  const [currentUrl, setCurrentUrl] = useState("");
   const [results, setResults] = useState<any>({
     webResult: [],
     imageResult: [],
@@ -25,6 +26,7 @@ const Chrome = () => {
 
   const handleReset = () => {
     setResults({ webResult: [], imagesResult: [] });
+    setCurrentUrl("");
   };
 
   const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -75,7 +77,11 @@ const Chrome = () => {
       >
         <ChromeHeader handleSearch={handleSearch} handleReset={handleReset} />
         {results.webResult.length === 0 || results.imageResult.length === 0 ? (
-          <ChromeBody handleSearch={handleSearch} />
+          <ChromeBody
+            currentUrl={currentUrl}
+            setCurrentUrl={setCurrentUrl}
+            handleSearch={handleSearch}
+          />
         ) : (
           <SearchResult results={results} />
         )}

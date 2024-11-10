@@ -13,6 +13,8 @@ import VSCode from "../vscode";
 import Chrome from "../chrome";
 import Edge from "../edge";
 
+import { FolderControlContextProvider } from "@/app/context/FolderControlContext";
+
 const desktopIcons = [
   {
     imgSrc: RecycleBin,
@@ -48,7 +50,7 @@ const desktopIcons = [
 
 const Desktop = () => {
   return (
-    <>
+    <FolderControlContextProvider>
       <Sleep />
 
       <div className="relative h-full w-full cursor-default">
@@ -73,7 +75,7 @@ const Desktop = () => {
           <Edge />
         </div>
       </div>
-    </>
+    </FolderControlContextProvider>
   );
 };
 
